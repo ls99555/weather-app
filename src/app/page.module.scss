@@ -1,11 +1,40 @@
-.container {
+.pageWrapper {
   min-height: 100vh;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  background: linear-gradient(to bottom right, #dbeafe, #93c5fd);
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #dbeafe, #93c5fd);
+  min-height: calc(100vh - 200px);
+}
+
+.welcome {
+  text-align: center;
+  color: #374151;
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  p {
+    font-size: 1.125rem;
+    color: #6b7280;
+  }
 }
 
 .searchForm {
@@ -28,21 +57,26 @@
 .loading {
   color: #374151;
   font-size: 1rem;
+  text-align: center;
 }
 
 .error {
   color: #ef4444;
   margin-bottom: 1rem;
   text-align: center;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
 .weatherCard {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   padding: 2rem;
   width: 100%;
   max-width: 42rem;
@@ -66,15 +100,19 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 0.5rem;
+    color: #1f2937;
   }
   
   .weatherType {
     font-size: 1.125rem;
+    color: #6b7280;
+    text-transform: capitalize;
   }
   
   .temperature {
     font-size: 2.25rem;
     font-weight: bold;
+    color: #3b82f6;
   }
 }
 
@@ -87,10 +125,17 @@
   .detailItem {
     .detailLabel {
       font-weight: 600;
+      color: #374151;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     
     .detailValue {
       margin-top: 0.25rem;
+      font-size: 1.125rem;
+      color: #1f2937;
+      font-weight: 500;
     }
   }
 }

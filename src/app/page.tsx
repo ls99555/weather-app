@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from './page.module.scss';
-import Button from '../components/Button/Button';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 interface WeatherData {
   name: string;
@@ -29,19 +30,15 @@ async function fetchWeatherByCity(city: string) {
 
 export default function Home() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [query, setQuery] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+  const handleSearch = async (query: string) => {
     setLoading(true);
     setError("");
     try {
-      const data = await fetchWeatherByCity(query.trim());
+      const data = await fetchWeatherByCity(query);
       setWeather(data);
-      setQuery(""); // Clear search after successful search
     } catch (e) {
       console.error("Search error:", e);
       const errorMessage = e instanceof Error ? e.message : "Unknown error occurred";
@@ -55,54 +52,67 @@ export default function Home() {
     }
   };
 
+  // Listen for city searches from footer
+  useEffect(() => {
+    const handleCitySearch = (event: CustomEvent) => {
+      handleSearch(event.detail);
+    };
+
+    window.addEventListener('citySearch', handleCitySearch as EventListener);
+    return () => window.removeEventListener('citySearch', handleCitySearch as EventListener);
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSearch} className={styles.searchForm}>
-        <input
-          type="text"
-          placeholder="Search for a city..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className={styles.searchInput}
-        />
-        <Button type="submit" variant="primary">
-          Search
-        </Button>
-      </form>
-      {loading && <div className={styles.loading}>Loading...</div>}
-      {error && <div className={styles.error}>{error}</div>}
-      {weather && (
-        <div className={styles.weatherCard}>
-          <div className={styles.weatherMain}>
-            <img
-              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
-              alt={weather.weather[0].description}
-              className={styles.weatherIcon}
-            />
-            <h2 className={styles.cityName}>{weather.name}</h2>
-            <div className={styles.weatherType}>{weather.weather[0].main}</div>
-            <div className={styles.temperature}>{Math.round(weather.main.temp)}°C</div>
-          </div>
-          <div className={styles.weatherDetails}>
-            <div className={styles.detailItem}>
-              <div className={styles.detailLabel}>Humidity</div>
-              <div className={styles.detailValue}>{weather.main.humidity}%</div>
+    <div className={styles.pageWrapper}>
+      <Header onSearch={handleSearch} loading={loading} />
+      
+      <main className={styles.main}>
+        <div className={styles.container}>
+          {loading && <div className={styles.loading}>Loading...</div>}
+          {error && <div className={styles.error}>{error}</div>}
+          {weather && (
+            <div className={styles.weatherCard}>
+              <div className={styles.weatherMain}>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+                  alt={weather.weather[0].description}
+                  className={styles.weatherIcon}
+                />
+                <h2 className={styles.cityName}>{weather.name}</h2>
+                <div className={styles.weatherType}>{weather.weather[0].main}</div>
+                <div className={styles.temperature}>{Math.round(weather.main.temp)}°C</div>
+              </div>
+              <div className={styles.weatherDetails}>
+                <div className={styles.detailItem}>
+                  <div className={styles.detailLabel}>Humidity</div>
+                  <div className={styles.detailValue}>{weather.main.humidity}%</div>
+                </div>
+                <div className={styles.detailItem}>
+                  <div className={styles.detailLabel}>Wind</div>
+                  <div className={styles.detailValue}>{weather.wind.speed} m/s</div>
+                </div>
+                <div className={styles.detailItem}>
+                  <div className={styles.detailLabel}>Rain</div>
+                  <div className={styles.detailValue}>{weather.rain ? Object.values(weather.rain)[0] + " mm" : "-"}</div>
+                </div>
+                <div className={styles.detailItem}>
+                  <div className={styles.detailLabel}>Updated</div>
+                  <div className={styles.detailValue}>{new Date(weather.dt * 1000).toLocaleTimeString()}</div>
+                </div>
+              </div>
             </div>
-            <div className={styles.detailItem}>
-              <div className={styles.detailLabel}>Wind</div>
-              <div className={styles.detailValue}>{weather.wind.speed} m/s</div>
+          )}
+          
+          {!weather && !loading && !error && (
+            <div className={styles.welcome}>
+              <h2>Welcome to Weather App</h2>
+              <p>Search for a city to see its current weather conditions</p>
             </div>
-            <div className={styles.detailItem}>
-              <div className={styles.detailLabel}>Rain</div>
-              <div className={styles.detailValue}>{weather.rain ? Object.values(weather.rain)[0] + " mm" : "-"}</div>
-            </div>
-            <div className={styles.detailItem}>
-              <div className={styles.detailLabel}>Updated</div>
-              <div className={styles.detailValue}>{new Date(weather.dt * 1000).toLocaleTimeString()}</div>
-            </div>
-          </div>
+          )}
         </div>
-      )}
+      </main>
+      
+      <Footer />
     </div>
   );
 }
