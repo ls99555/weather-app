@@ -23,40 +23,42 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <div className={styles.section}>
-          <h3 className={styles.title}>Popular Cities</h3>
-          <div className={styles.cityList}>
-            {popularCities.map((city) => (
-              <Button
-                key={city}
-                onClick={() => handleCityClick(city)}
-                variant="secondary"
+        <div className={styles.topSection}>
+          <div className={styles.section}>
+            <h3 className={styles.title}>Popular Cities</h3>
+            <div className={styles.cityList}>
+              {popularCities.map((city) => (
+                <Button
+                  key={city}
+                  onClick={() => handleCityClick(city)}
+                  variant="secondary"
+                >
+                  {city}
+                </Button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.section}>
+            <h3 className={styles.title}>About</h3>
+            <p className={styles.attribution}>
+              Powered by{' '}
+              <a 
+                href="https://openweathermap.org" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.link}
               >
-                {city}
-              </Button>
-            ))}
+                OpenWeatherMap
+              </a>
+            </p>
+            <p className={styles.disclaimer}>
+              Weather data is updated every few minutes and may vary from actual conditions.
+            </p>
           </div>
         </div>
 
-        <div className={styles.section}>
-          <h3 className={styles.title}>About</h3>
-          <p className={styles.attribution}>
-            Powered by{' '}
-            <a 
-              href="https://openweathermap.org" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
-              OpenWeatherMap
-            </a>
-          </p>
-          <p className={styles.disclaimer}>
-            Weather data is updated every few minutes and may vary from actual conditions.
-          </p>
-        </div>
-
-        <div className={styles.section}>
+        <div className={styles.bottomSection}>
           <p className={styles.copyright}>
             © {currentYear} Weather App. Developed by{' '}
             <a 

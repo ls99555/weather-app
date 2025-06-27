@@ -28,22 +28,22 @@ export default function Header({ onSearch, loading = false }: HeaderProps) {
           <h1 className={styles.title}>Weather App</h1>
         </div>
         
-        <form onSubmit={handleSubmit} className={styles.searchForm}>
-          <input
-            type="text"
-            placeholder="Search for a city..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className={styles.searchInput}
-            disabled={loading}
-          />
-          <Button type="submit" variant="primary" disabled={loading || query.trim().length === 0}>
-            {loading ? "..." : "Search"}
-          </Button>
-        </form>
+        <div className={styles.searchAndToggle}>
+          <form onSubmit={handleSubmit} className={styles.searchForm}>
+            <input
+              type="text"
+              placeholder="Search for a city..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className={styles.searchInput}
+              disabled={loading}
+            />
+            <Button type="submit" variant="primary" disabled={loading || query.trim().length === 0}>
+              {loading ? "..." : "Search"}
+            </Button>
+          </form>
 
-        <div className={styles.actions}>
-          <Button variant="secondary" onClick={toggleTheme}>
+          <Button variant="secondary" onClick={toggleTheme} className={styles.themeToggle}>
             {theme === 'light' ? '🌙' : '☀️'}
           </Button>
         </div>

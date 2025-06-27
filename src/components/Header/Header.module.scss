@@ -43,14 +43,27 @@
   }
 }
 
-.searchForm {
+.searchAndToggle {
   display: flex;
-  gap: $spacing-sm;
+  align-items: center;
+  gap: $spacing-md;
   flex: 1;
-  max-width: 400px;
+  justify-content: center;
   
   @include responsive(md) {
     width: 100%;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.searchForm {
+  display: flex;
+  gap: $spacing-sm;
+  max-width: 400px;
+  width: 100%;
+  
+  @include responsive(md) {
     max-width: none;
   }
 }
@@ -67,8 +80,13 @@
   }
 }
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: $spacing-md;
+.themeToggle {
+  min-width: 44px;
+  height: 44px;
+  padding: $spacing-sm;
+  
+  @include responsive(md) {
+    width: auto;
+    min-width: auto;
+  }
 }

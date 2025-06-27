@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import Image from "next/image";
 import styles from './page.module.scss';
 import ClientLayout from '../components/ClientLayout/ClientLayout';
 
@@ -61,9 +62,11 @@ export default function Home() {
           {weather && (
             <div className={styles.weatherCard}>
               <div className={styles.weatherMain}>
-                <img
+                <Image
                   src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
                   alt={weather.weather[0].description}
+                  width={80}
+                  height={80}
                   className={styles.weatherIcon}
                 />
                 <h2 className={styles.cityName}>{weather.name}</h2>
