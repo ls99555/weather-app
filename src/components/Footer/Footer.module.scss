@@ -74,6 +74,28 @@
   color: var(--color-text-tertiary);
   font-size: $text-xs;
   line-height: $leading-relaxed;
+  margin-bottom: $spacing-md;
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  font-size: $text-xs;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+}
+
+.separator {
+  color: var(--color-text-tertiary);
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .bottomSection {

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   creator: "Luke Stevens",
   publisher: "Luke Stevens",
   formatDetection: {
-    email: false,
+    email: true,
     address: false,
     telephone: false,
   },

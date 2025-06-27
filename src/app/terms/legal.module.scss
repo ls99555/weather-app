@@ -1,0 +1,149 @@
+@use "../../styles/variables" as *;
+
+.pageWrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  @include flex-column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.main {
+  flex: 1;
+  background: var(--color-bg-primary);
+  padding: $spacing-xl 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+  
+  @media (max-width: 768px) {
+    padding: 0 $spacing-md;
+  }
+}
+
+.content {
+  background: var(--color-weather-card-bg);
+  border: 1px solid var(--color-weather-card-border);
+  border-radius: $radius-lg;
+  box-shadow: var(--color-weather-card-shadow);
+  padding: $spacing-4xl;
+  
+  @media (max-width: 768px) {
+    padding: $spacing-xl;
+  }
+}
+
+.title {
+  font-size: $text-3xl;
+  font-weight: $font-bold;
+  color: var(--color-text-primary);
+  margin: 0 0 $spacing-sm 0;
+  text-align: center;
+}
+
+.lastUpdated {
+  font-size: $text-sm;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin: 0 0 $spacing-4xl 0;
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    font-size: $text-lg;
+    font-weight: $font-semibold;
+    color: var(--color-text-primary);
+    margin: 0 0 $spacing-md 0;
+    border-bottom: 1px solid var(--color-border-primary);
+    padding-bottom: $spacing-sm;
+  }
+  
+  p {
+    font-size: $text-base;
+    color: var(--color-text-secondary);
+    line-height: $leading-relaxed;
+    margin: 0 0 $spacing-md 0;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.list {
+  margin: $spacing-md 0;
+  padding-left: $spacing-lg;
+  
+  li {
+    font-size: $text-base;
+    color: var(--color-text-secondary);
+    line-height: $leading-relaxed;
+    margin-bottom: $spacing-sm;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.link {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+  font-weight: $font-medium;
+  
+  &:hover {
+    color: var(--color-brand-primary-hover);
+    text-decoration: underline;
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: $spacing-4xl;
+  padding-top: $spacing-xl;
+  border-top: 1px solid var(--color-border-primary);
+  gap: $spacing-md;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.homeLink,
+.policyLink {
+  @include button-base;
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  border: 1px solid var(--color-border-primary);
+  padding: $spacing-sm $spacing-lg;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: var(--color-btn-secondary-hover);
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
+    transform: translateY(-1px);
+  }
+}
+
+.homeLink {
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  border-color: var(--color-btn-primary-bg);
+  
+  &:hover {
+    background-color: var(--color-btn-primary-hover);
+    border-color: var(--color-btn-primary-hover);
+    color: var(--color-btn-primary-text);
+  }
+}

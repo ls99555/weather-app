@@ -55,6 +55,11 @@ export default function Footer() {
             <p className={styles.disclaimer}>
               Weather data is updated every few minutes and may vary from actual conditions.
             </p>
+            <div className={styles.legalLinks}>
+              <a href="/terms" className={styles.link}>Terms of Service</a>
+              <span className={styles.separator}>•</span>
+              <a href="/privacy" className={styles.link}>Privacy Policy</a>
+            </div>
           </div>
         </div>
 
