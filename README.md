@@ -1,33 +1,51 @@
+# Weather App
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+A modern weather application that allows users to search for weather information in different cities using the OpenWeatherMap API.
+
+## Features
+
+- 🌤️ Search weather by city name
+- 🌡️ Display current temperature, humidity, wind speed
+- 🌧️ Rain information
+- 📱 Responsive design with SCSS modules
+- ⚡ Built with Next.js 15 and TypeScript
 
 ## Getting Started
 
-First, run the development server:
+First, set up your environment variables:
+
+1. Get a free API key from [OpenWeatherMap](https://openweathermap.org/api)
+2. Create a `.env.local` file in the root directory
+3. Add your API key:
+   ```
+   NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
+   ```
+
+Then, install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: SCSS Modules
+- **API**: OpenWeatherMap
+- **Architecture**: Component-based with reusable Button component
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/src/app` - Main application pages
+- `/src/components` - Reusable components
+- **SCSS Modules** - Component-scoped styling
+- **Environment Variables** - API key management
 
 ## Deploy on Vercel
 
