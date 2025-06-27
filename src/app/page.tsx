@@ -1,9 +1,8 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from './page.module.scss';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
+import ClientLayout from '../components/ClientLayout/ClientLayout';
 
 interface WeatherData {
   name: string;
@@ -52,21 +51,10 @@ export default function Home() {
     }
   };
 
-  // Listen for city searches from footer
-  useEffect(() => {
-    const handleCitySearch = (event: CustomEvent) => {
-      handleSearch(event.detail);
-    };
-
-    window.addEventListener('citySearch', handleCitySearch as EventListener);
-    return () => window.removeEventListener('citySearch', handleCitySearch as EventListener);
-  }, []);
-
   return (
-    <div className={styles.pageWrapper}>
-      <Header onSearch={handleSearch} loading={loading} />
-      
-      <main className={styles.main}>
+    <ClientLayout onSearch={handleSearch} loading={loading}>
+      <div className={styles.pageWrapper}>
+        <main className={styles.main}>
         <div className={styles.container}>
           {loading && <div className={styles.loading}>Loading...</div>}
           {error && <div className={styles.error}>{error}</div>}
@@ -111,8 +99,7 @@ export default function Home() {
           )}
         </div>
       </main>
-      
-      <Footer />
-    </div>
+      </div>
+    </ClientLayout>
   );
 }
