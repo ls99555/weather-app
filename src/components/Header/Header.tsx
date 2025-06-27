@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './Header.module.scss';
 import Button from '../Button/Button';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface HeaderProps {
   onSearch: (query: string) => void;
@@ -9,6 +10,7 @@ interface HeaderProps {
 
 export default function Header({ onSearch, loading = false }: HeaderProps) {
   const [query, setQuery] = useState("");
+  const { theme, toggleTheme } = useTheme();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,8 +43,8 @@ export default function Header({ onSearch, loading = false }: HeaderProps) {
         </form>
 
         <div className={styles.actions}>
-          <Button variant="secondary" onClick={() => console.log('Theme toggle clicked')}>
-            🌙
+          <Button variant="secondary" onClick={toggleTheme}>
+            {theme === 'light' ? '🌙' : '☀️'}
           </Button>
         </div>
       </div>

@@ -60,7 +60,7 @@ export default function Footer() {
           <p className={styles.copyright}>
             © {currentYear} Weather App. Developed by{' '}
             <a 
-              href="https://lsteves.dev" 
+              href="https://lstevens.dev" 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.link}

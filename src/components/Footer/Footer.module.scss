@@ -1,69 +1,72 @@
+@use "../../styles/variables" as *;
+
 .footer {
-  background: #1f2937;
-  color: #f9fafb;
-  padding: 3rem 0 2rem;
+  background: var(--color-footer-bg);
+  color: var(--color-text-primary);
+  padding: $spacing-4xl 0 $spacing-xl;
   margin-top: auto;
+  border-top: 1px solid var(--color-border-primary);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 $spacing-xl;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: $spacing-xl;
   
-  @media (max-width: 768px) {
+  @include responsive(md) {
     grid-template-columns: 1fr;
-    padding: 0 1rem;
-    gap: 1.5rem;
+    padding: 0 $spacing-md;
+    gap: $spacing-lg;
   }
 }
 
 .section {
   .title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #e5e7eb;
+    font-size: $text-lg;
+    font-weight: $font-semibold;
+    margin-bottom: $spacing-md;
+    color: var(--color-text-primary);
   }
 }
 
 .cityList {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: $spacing-sm;
 }
 
 .attribution {
-  margin-bottom: 0.5rem;
-  color: #d1d5db;
-  font-size: 0.875rem;
+  margin-bottom: $spacing-sm;
+  color: var(--color-text-secondary);
+  font-size: $text-sm;
 }
 
 .disclaimer {
-  color: #9ca3af;
-  font-size: 0.75rem;
-  line-height: 1.4;
+  color: var(--color-text-tertiary);
+  font-size: $text-xs;
+  line-height: $leading-relaxed;
 }
 
 .copyright {
-  color: #d1d5db;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: $text-sm;
+  margin-bottom: $spacing-sm;
 }
 
 .lastUpdated {
-  color: #9ca3af;
-  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-size: $text-xs;
 }
 
 .link {
-  color: #60a5fa;
+  color: var(--color-brand-primary);
   text-decoration: none;
   
   &:hover {
-    color: #93c5fd;
+    color: var(--color-brand-primary-hover);
     text-decoration: underline;
   }
 }

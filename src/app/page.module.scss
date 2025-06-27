@@ -1,141 +1,121 @@
+@use "../styles/variables" as *;
+
 .pageWrapper {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
 }
 
 .main {
   flex: 1;
-  background: linear-gradient(to bottom right, #dbeafe, #93c5fd);
-  padding: 2rem 0;
+  background: linear-gradient(to bottom right, var(--color-bg-accent), var(--color-brand-secondary));
+  padding: $spacing-xl 0;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  flex-direction: column;
+  padding: 0 $spacing-xl;
+  @include flex-column;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 200px);
+  
+  @include responsive(md) {
+    padding: 0 $spacing-md;
+  }
 }
 
 .welcome {
   text-align: center;
-  color: #374151;
+  color: var(--color-text-secondary);
   
   h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1f2937;
+    font-size: $text-3xl;
+    margin-bottom: $spacing-md;
+    color: var(--color-text-primary);
+    font-weight: $font-bold;
   }
   
   p {
-    font-size: 1.125rem;
-    color: #6b7280;
-  }
-}
-
-.searchForm {
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 0.5rem;
-}
-
-.searchInput {
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  border: 1px solid #d1d5db;
-  
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    font-size: $text-lg;
+    color: var(--color-text-tertiary);
   }
 }
 
 .loading {
-  color: #374151;
-  font-size: 1rem;
+  color: var(--color-text-secondary);
+  font-size: $text-base;
   text-align: center;
+  padding: $spacing-lg;
 }
 
 .error {
-  color: #ef4444;
-  margin-bottom: 1rem;
+  color: var(--color-error);
+  margin-bottom: $spacing-md;
   text-align: center;
-  background: rgba(239, 68, 68, 0.1);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: var(--color-bg-secondary);
+  padding: $spacing-md;
+  border-radius: $radius-lg;
+  border: 1px solid var(--color-border-primary);
+  max-width: 500px;
+  width: 100%;
 }
 
 .weatherCard {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  padding: 2rem;
+  @include card-base;
+  text-align: center;
+  max-width: 400px;
   width: 100%;
-  max-width: 42rem;
-  
-  @media (min-width: 640px) {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.weatherMain {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   
   .weatherIcon {
-    width: 6rem;
-    height: 6rem;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto $spacing-md;
   }
   
   .cityName {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 0.5rem;
-    color: #1f2937;
+    font-size: $text-2xl;
+    font-weight: $font-bold;
+    margin-top: $spacing-sm;
+    color: var(--color-text-primary);
   }
   
   .weatherType {
-    font-size: 1.125rem;
-    color: #6b7280;
+    font-size: $text-lg;
+    color: var(--color-text-secondary);
     text-transform: capitalize;
+    margin-bottom: $spacing-sm;
   }
   
   .temperature {
-    font-size: 2.25rem;
-    font-weight: bold;
-    color: #3b82f6;
+    font-size: $text-4xl;
+    font-weight: $font-bold;
+    color: var(--color-brand-primary);
+    margin-bottom: $spacing-lg;
   }
 }
 
 .weatherDetails {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: $spacing-md;
   text-align: center;
+  margin-top: $spacing-lg;
   
   .detailItem {
     .detailLabel {
-      font-weight: 600;
-      color: #374151;
-      font-size: 0.875rem;
+      font-weight: $font-semibold;
+      color: var(--color-text-secondary);
+      font-size: $text-xs;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-bottom: $spacing-xs;
     }
     
     .detailValue {
-      margin-top: 0.25rem;
-      font-size: 1.125rem;
-      color: #1f2937;
-      font-weight: 500;
+      font-size: $text-lg;
+      color: var(--color-text-primary);
+      font-weight: $font-medium;
     }
   }
 }

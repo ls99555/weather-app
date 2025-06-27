@@ -1,0 +1,46 @@
+@use "./variables" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  @include theme-styles;
+}
+
+html {
+  font-size: 16px;
+  line-height: $leading-normal;
+}
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: $font-primary;
+  font-size: $text-base;
+  transition: background-color $transition-base, color $transition-base;
+  min-height: 100vh;
+}
+
+// Smooth transitions for theme changes
+* {
+  transition: background-color $transition-base, color $transition-base, border-color $transition-base;
+}
+
+// Focus styles
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+// Link styles
+a {
+  color: var(--color-brand-primary);
+  transition: color $transition-base;
+  
+  &:hover {
+    color: var(--color-brand-primary-hover);
+  }
+}

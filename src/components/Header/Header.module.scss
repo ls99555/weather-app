@@ -1,75 +1,68 @@
+@use "../../styles/variables" as *;
+
 .header {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--color-header-bg);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-header-border);
+  padding: $spacing-md 0;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: $z-sticky;
+  box-shadow: $shadow-md;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  padding: 0 $spacing-xl;
+  @include flex-between;
+  gap: $spacing-xl;
   
-  @media (max-width: 768px) {
+  @include responsive(md) {
     flex-direction: column;
-    gap: 1rem;
-    padding: 0 1rem;
+    gap: $spacing-md;
+    padding: 0 $spacing-md;
   }
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: $spacing-sm;
   
   .logo {
-    font-size: 2rem;
+    font-size: $text-3xl;
   }
   
   .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2563eb;
+    font-size: $text-2xl;
+    font-weight: $font-bold;
+    color: var(--color-brand-primary);
     margin: 0;
   }
 }
 
 .searchForm {
   display: flex;
-  gap: 0.5rem;
+  gap: $spacing-sm;
   flex: 1;
   max-width: 400px;
   
-  @media (max-width: 768px) {
+  @include responsive(md) {
     width: 100%;
     max-width: none;
   }
 }
 
 .searchInput {
+  @include input-base;
   flex: 1;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid #d1d5db;
-  font-size: 1rem;
-  
-  &:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  }
+  padding: $spacing-sm $spacing-md;
+  font-size: $text-base;
   
   &:disabled {
-    background-color: #f3f4f6;
+    background-color: var(--color-bg-tertiary);
     cursor: not-allowed;
   }
 }
@@ -77,5 +70,5 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: $spacing-md;
 }
