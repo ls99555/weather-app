@@ -1,8 +1,10 @@
 # Weather App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**🌐 Live Demo**: [https://weather-app-one-tau-91.vercel.app](https://weather-app-one-tau-91.vercel.app)
 
 A modern weather application that allows users to search for weather information in different cities using the OpenWeatherMap API.
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Features
 
@@ -92,3 +94,24 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 - **Digital Ocean App Platform**: Deploy directly from GitHub
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## CV Project Points
+
+This project demonstrates key frontend development skills:
+
+• **AI-Assisted Development**: Used GitHub Copilot to speed up initial development, then rewrote and adapted the generated code to fit my coding style and project needs. This taught me how to work with different code patterns and improved my ability to review and refactor code effectively.
+
+• **CSS Migration Project**: Took an existing Tailwind-based project and completely rebuilt the styling system using SCSS modules. Created my own design system with CSS variables for themes and made sure everything worked perfectly on mobile devices, including iPhones with notches.
+
+• **Custom Layout Work**: Modified AI-generated layouts extensively to match my vision for the app. Built responsive breakpoints from scratch, implemented mobile-first design, and learned different approaches to CSS organization while making the interface look exactly how I wanted.
+
+• **Full Production Deployment**: Took the project all the way to production on Vercel, including creating custom weather icons, adding proper SEO, building legal pages, and optimizing performance. The app is live and fully functional for real users.
+
+• **Real API Integration**: Connected to OpenWeatherMap's API with proper TypeScript typing, handled all the error cases (network issues, bad responses, missing data), and made sure users get helpful feedback when things go wrong. Also learned proper environment variable security.
+
+---
+
+**Tech Stack**: Next.js 15, TypeScript, React 19, SCSS Modules, Vercel  
+**Repository**: [github.com/ls99555/weather-app](https://github.com/ls99555/weather-app)
+
+
