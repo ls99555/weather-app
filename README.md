@@ -47,6 +47,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **SCSS Modules** - Component-scoped styling
 - **Environment Variables** - API key management
 
+## Contact
+
+**Developer**: Luke Stevens
+
+- 🌐 **Website**: [lstevens.dev](https://lstevens.dev)
+- 📧 **Email**: [luke@lstevens.dev](mailto:luke@lstevens.dev)
+- 💼 **LinkedIn**: [Luke Stevens](https://www.linkedin.com/in/luke-stevens-a117bab5/)
+- 🐙 **GitHub**: [ls99555](https://github.com/ls99555)
+
+Feel free to reach out for any questions, feedback, or collaboration opportunities!
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
