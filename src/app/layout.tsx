@@ -67,6 +67,11 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover', // Important for iPhone notch/safe area support
+  colorScheme: 'light dark', // Support both light and dark modes
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f9fafb' },
+    { media: '(prefers-color-scheme: dark)', color: '#1f2937' }
+  ],
 };
 
 export default function RootLayout({
