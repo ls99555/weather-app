@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Image from "next/image";
 import styles from './page.module.scss';
 import ClientLayout from '../components/ClientLayout/ClientLayout';
+import SearchHandler from '../components/SearchHandler/SearchHandler';
 
 interface WeatherData {
   name: string;
@@ -15,16 +16,36 @@ interface WeatherData {
 }
 
 async function fetchWeatherByCity(city: string) {
-  const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY || "fdb68eeeb8c3d7e3207b4d1285ba3d9f";
+  const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
+  
+  if (!apiKey) {
+    throw new Error("API key is not configured. Please add NEXT_PUBLIC_OPENWEATHER_API_KEY to your environment variables.");
+  }
+  
   console.log("Fetching weather for city:", city);
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`
   );
+  
   if (!res.ok) {
     const error = await res.text();
     console.error("API Error:", error);
-    throw new Error(`Failed to fetch weather: ${error}`);
+    
+    // Parse OpenWeatherMap error responses
+    try {
+      const errorData = JSON.parse(error);
+      if (errorData.cod === "404") {
+        throw new Error(`City "${city}" not found. Please check the spelling and try again.`);
+      } else if (errorData.cod === "401") {
+        throw new Error("Invalid API key. Please check your OpenWeatherMap API key configuration.");
+      }
+    } catch {
+      // If we can't parse the error, use the original
+    }
+    
+    throw new Error(`Failed to fetch weather data: ${error}`);
   }
+  
   return res.json();
 }
 
@@ -54,6 +75,9 @@ export default function Home() {
 
   return (
     <ClientLayout onSearch={handleSearch} loading={loading}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchHandler onSearch={handleSearch} />
+      </Suspense>
       <div className={styles.pageWrapper}>
         <main className={styles.main}>
         <div className={styles.container}>

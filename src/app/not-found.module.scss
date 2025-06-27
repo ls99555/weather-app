@@ -1,0 +1,162 @@
+@use "../styles/variables" as *;
+
+.pageWrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  @include flex-column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  flex: 1;
+  @include flex-center;
+  background: linear-gradient(to bottom right, var(--color-bg-accent), var(--color-brand-secondary));
+  padding: $spacing-xl 0;
+}
+
+.content {
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  padding: $spacing-xl;
+  background: var(--color-weather-card-bg);
+  border: 1px solid var(--color-weather-card-border);
+  border-radius: $radius-lg;
+  box-shadow: var(--color-weather-card-shadow);
+  margin: 0 $spacing-md;
+}
+
+.iconContainer {
+  margin-bottom: $spacing-lg;
+}
+
+.weatherIcon {
+  font-size: 4rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.title {
+  font-size: $text-4xl;
+  font-weight: $font-bold;
+  color: var(--color-brand-primary);
+  margin: 0 0 $spacing-sm 0;
+}
+
+.subtitle {
+  font-size: $text-2xl;
+  font-weight: $font-semibold;
+  color: var(--color-text-primary);
+  margin: 0 0 $spacing-lg 0;
+}
+
+.description {
+  font-size: $text-lg;
+  color: var(--color-text-secondary);
+  line-height: $leading-relaxed;
+  margin: 0 0 $spacing-xl 0;
+  max-width: 400px;
+}
+
+.actions {
+  margin-bottom: $spacing-xl;
+}
+
+.homeButton {
+  @include button-base;
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  padding: $spacing-md $spacing-xl;
+  font-size: $text-lg;
+  font-weight: $font-semibold;
+  text-decoration: none;
+  min-height: 48px;
+  
+  &:hover {
+    background-color: var(--color-btn-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.suggestions {
+  width: 100%;
+  
+  h3 {
+    font-size: $text-base;
+    font-weight: $font-medium;
+    color: var(--color-text-secondary);
+    margin: 0 0 $spacing-md 0;
+  }
+}
+
+.suggestionList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  justify-content: center;
+}
+
+.suggestion {
+  padding: $spacing-sm $spacing-md;
+  background: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  border: 1px solid var(--color-border-primary);
+  border-radius: $radius-md;
+  text-decoration: none;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  transition: all $transition-base;
+  
+  &:hover {
+    background: var(--color-btn-secondary-hover);
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: $spacing-lg;
+    margin: 0 $spacing-sm;
+  }
+  
+  .title {
+    font-size: $text-3xl;
+  }
+  
+  .subtitle {
+    font-size: $text-lg;
+  }
+  
+  .description {
+    font-size: $text-base;
+  }
+  
+  .suggestionList {
+    gap: $spacing-xs;
+  }
+  
+  .suggestion {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $text-xs;
+  }
+}
