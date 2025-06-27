@@ -10,6 +10,11 @@
   top: 0;
   z-index: $z-sticky;
   box-shadow: $shadow-md;
+  
+  /* Safe area support for iPhone notch */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-top: calc($spacing-md + env(safe-area-inset-top));
 }
 
 .container {
@@ -19,7 +24,7 @@
   @include flex-between;
   gap: $spacing-xl;
   
-  @include responsive(md) {
+  @media (max-width: 768px) {
     flex-direction: column;
     gap: $spacing-md;
     padding: 0 $spacing-md;
@@ -50,10 +55,10 @@
   flex: 1;
   justify-content: center;
   
-  @include responsive(md) {
-    width: 100%;
+  @media (max-width: 768px) {
     flex-direction: column;
     gap: $spacing-sm;
+    width: 100%;
   }
 }
 
@@ -61,10 +66,10 @@
   display: flex;
   gap: $spacing-sm;
   max-width: 400px;
-  width: 100%;
   
-  @include responsive(md) {
+  @media (max-width: 768px) {
     max-width: none;
+    width: 100%;
   }
 }
 
@@ -84,9 +89,15 @@
   min-width: 44px;
   height: 44px;
   padding: $spacing-sm;
+  flex-shrink: 0;
   
-  @include responsive(md) {
-    width: auto;
-    min-width: auto;
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  @media (min-width: 769px) {
+    margin-left: $spacing-md;
   }
 }

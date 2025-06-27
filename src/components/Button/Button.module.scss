@@ -4,6 +4,16 @@
   @include button-base;
   padding: $spacing-sm $spacing-md;
   font-size: $text-base;
+  
+  /* Enhanced touch target for iPhone */
+  min-height: 44px; /* Apple's recommended minimum touch target */
+  min-width: 44px;
+  
+  @media (max-width: 480px) {
+    /* Slightly larger touch targets on very small screens */
+    min-height: 48px;
+    padding: $spacing-md $spacing-lg;
+  }
 }
 
 .primary {

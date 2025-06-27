@@ -6,6 +6,11 @@
   padding: $spacing-4xl 0 $spacing-xl;
   margin-top: auto;
   border-top: 1px solid var(--color-border-primary);
+  
+  /* Safe area support for iPhone home indicator */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: calc($spacing-xl + env(safe-area-inset-bottom));
 }
 
 .container {
@@ -19,19 +24,28 @@
 }
 
 .topSection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $spacing-xl;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: $spacing-4xl;
   margin-bottom: $spacing-4xl;
   
-  @include responsive(md) {
-    grid-template-columns: 1fr;
-    gap: $spacing-lg;
-    margin-bottom: $spacing-xl;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xl;
+    text-align: center;
   }
 }
 
 .section {
+  flex: 0 0 auto;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 400px;
+  }
+  
   .title {
     font-size: $text-lg;
     font-weight: $font-semibold;
@@ -44,6 +58,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: $spacing-sm;
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 }
 
 .attribution {

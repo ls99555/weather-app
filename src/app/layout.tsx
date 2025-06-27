@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.scss";
 import { ThemeProvider } from '../contexts/ThemeContext';
@@ -16,6 +16,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Weather App",
   description: "A modern weather application built with Next.js and TypeScript",
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover', // Important for iPhone notch/safe area support
 };
 
 export default function RootLayout({

@@ -42,8 +42,7 @@ export default function Header({ onSearch, loading = false }: HeaderProps) {
               {loading ? "..." : "Search"}
             </Button>
           </form>
-
-          <Button variant="secondary" onClick={toggleTheme} className={styles.themeToggle}>
+          <Button type="button" variant="secondary" onClick={toggleTheme} className={styles.themeToggle}>
             {theme === 'light' ? '🌙' : '☀️'}
           </Button>
         </div>
