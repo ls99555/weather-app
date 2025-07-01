@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import ThemeColorManager from '../ThemeColorManager/ThemeColorManager';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -23,6 +24,7 @@ export default function ClientLayout({ children, onSearch, loading }: ClientLayo
 
   return (
     <>
+      <ThemeColorManager />
       <Header onSearch={onSearch} loading={loading} />
       {children}
       <Footer />

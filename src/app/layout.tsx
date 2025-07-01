@@ -52,6 +52,10 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/manifest.json",
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+  },
   icons: {
     icon: [
       { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
@@ -68,10 +72,6 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: 'cover', // Important for iPhone notch/safe area support
   colorScheme: 'light dark', // Support both light and dark modes
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f9fafb' },
-    { media: '(prefers-color-scheme: dark)', color: '#1f2937' }
-  ],
 };
 
 export default function RootLayout({
