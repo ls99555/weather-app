@@ -1,13 +1,14 @@
 User-agent: *
 Allow: /
 
-# Block access to sensitive files
+# Block access to sensitive files and build artifacts
 Disallow: /.env*
-Disallow: /api/keys/
+Disallow: /_next/
+Disallow: /api/
 
-# Performance optimization
-Sitemap: https://your-domain.com/sitemap.xml
-
-# Allow legal pages
+# Allow important pages
 Allow: /terms
 Allow: /privacy
+
+# Sitemap location
+Sitemap: https://weather-app-one-tau-91.vercel.app/sitemap.xml
