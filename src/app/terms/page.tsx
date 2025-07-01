@@ -13,7 +13,7 @@ export default function TermsPage() {
         <div className={styles.container}>
           <div className={styles.content}>
             <h1 className={styles.title}>Terms of Service</h1>
-            <p className={styles.lastUpdated}>Last updated: December 27, 2024</p>
+            <p className={styles.lastUpdated}>Last updated: July 1, 2025</p>
             
             <section className={styles.section}>
               <h2>Acceptance of Terms</h2>
@@ -48,10 +48,12 @@ export default function TermsPage() {
             </section>
 
             <section className={styles.section}>
-              <h2>Privacy</h2>
+              <h2>Privacy and Analytics</h2>
               <p>
-                We do not collect, store, or share any personal information. No user accounts are required. 
-                The app only searches for weather data based on city names you enter.
+                We use Google Analytics to understand how visitors interact with our website. This service may collect 
+                anonymous usage data including pages visited, time spent on site, and general location information. 
+                No personally identifiable information is collected. For more details, see our{' '}
+                <Link href="/privacy" className={styles.link}>Privacy Policy</Link>.
               </p>
             </section>
 
