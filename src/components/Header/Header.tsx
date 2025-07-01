@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export default function Header({ onSearch, loading = false }: HeaderProps) {
   const [query, setQuery] = useState("");
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,12 +23,19 @@ export default function Header({ onSearch, loading = false }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.brand}>
-          <div className={styles.logo}>🌤️</div>
-          <h1 className={styles.title}>Weather App</h1>
+        {/* Brand and Toggle on same row for both mobile and desktop */}
+        <div className={styles.topRow}>
+          <div className={styles.brand}>
+            <div className={styles.logo}>🌤️</div>
+            <h1 className={styles.title}>Weather App</h1>
+          </div>
+          {/* Toggle switch - positioned next to logo on far right */}
+          <Button type="button" variant="toggle" onClick={toggleTheme} className={styles.themeToggle}>
+          </Button>
         </div>
         
-        <div className={styles.searchAndToggle}>
+        {/* Search form - center on desktop, full width on mobile */}
+        <div className={styles.searchContainer}>
           <form onSubmit={handleSubmit} className={styles.searchForm}>
             <input
               type="text"
@@ -42,9 +49,6 @@ export default function Header({ onSearch, loading = false }: HeaderProps) {
               {loading ? "..." : "Search"}
             </Button>
           </form>
-          <Button type="button" variant="secondary" onClick={toggleTheme} className={styles.themeToggle}>
-            {theme === 'light' ? '🌙' : '☀️'}
-          </Button>
         </div>
       </div>
     </header>

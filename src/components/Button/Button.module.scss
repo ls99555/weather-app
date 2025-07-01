@@ -34,3 +34,91 @@
     background-color: var(--color-btn-secondary-hover);
   }
 }
+
+.toggleSwitch {
+  position: relative;
+  width: 60px;
+  height: 28px; /* Exact height we want */
+  background: #e5e7eb; /* Light gray track */
+  border-radius: 14px; /* Adjusted radius for new height */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 0; /* Remove all padding */
+  margin: 0;
+  overflow: hidden; /* Hide overflow for clean look */
+  outline: none;
+  /* Override ALL button defaults */
+  min-height: unset; /* Override the 44px min-height from .button */
+  min-width: unset; /* Override the 44px min-width from .button */
+  line-height: 1; /* Remove any line-height spacing */
+  font-size: 0; /* Remove any font spacing */
+  vertical-align: top; /* Remove baseline spacing */
+  /* Ensure proper box-sizing */
+  box-sizing: border-box;
+  
+  /* Remove button styling */
+  -webkit-appearance: none;
+  appearance: none;
+  
+  /* Create the sliding indicator - exactly same height as background */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; /* Absolutely no spacing at top */
+    left: 0; /* No spacing at left when off */
+    width: 28px; /* Same as background height for perfect circle */
+    height: 28px; /* Same as background height - fills completely */
+    background: white;
+    border-radius: 14px; /* Half of height for perfect circle */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 2;
+    /* Remove any potential spacing */
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    /* Ensure proper box-sizing and positioning */
+    box-sizing: border-box;
+    display: block;
+  }
+  
+  /* Active/Dark mode state */
+  &.active {
+    background: #1f2937; /* Dark gray/black when active */
+    
+    &::after {
+      transform: translateX(32px); /* Slide to the right (60px - 28px = 32px) */
+    }
+  }
+  
+  /* Hover effects */
+  &:hover:not(:disabled) {
+    &.active {
+      background: #111827; /* Darker black on hover */
+    }
+    
+    &:not(.active) {
+      background: #d1d5db; /* Slightly darker gray on hover */
+    }
+  }
+  
+  /* Dark theme adjustments */
+  [data-theme="dark"] & {
+    background: #374151; /* Dark gray track in dark mode */
+    
+    &.active {
+      background: #1f2937; /* Black when active */
+    }
+  }
+  
+  /* Ensure proper touch target on mobile */
+  @media (max-width: 480px) {
+    min-width: 60px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

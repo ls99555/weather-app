@@ -21,13 +21,33 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 $spacing-xl;
-  @include flex-between;
-  gap: $spacing-xl;
   
   @media (max-width: 768px) {
+    padding: 0 $spacing-md;
+    display: flex;
     flex-direction: column;
     gap: $spacing-md;
-    padding: 0 $spacing-md;
+  }
+  
+  @media (min-width: 769px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing-xl;
+  }
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-sm; /* Same gap as search form */
+  width: 100%;
+  
+  @media (min-width: 769px) {
+    /* On desktop, this is just the brand section */
+    width: auto;
+    flex: 0 0 auto;
   }
 }
 
@@ -48,17 +68,18 @@
   }
 }
 
-.searchAndToggle {
+.searchContainer {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-  flex: 1;
-  justify-content: center;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: $spacing-sm;
     width: 100%;
+  }
+  
+  @media (min-width: 769px) {
+    flex: 1;
+    justify-content: center;
+    max-width: 400px;
   }
 }
 
@@ -86,18 +107,14 @@
 }
 
 .themeToggle {
-  min-width: 44px;
-  height: 44px;
-  padding: $spacing-sm;
   flex-shrink: 0;
-  
-  @media (max-width: 768px) {
-    margin-left: 0;
-    width: 100%;
-    max-width: 200px;
-  }
-  
-  @media (min-width: 769px) {
-    margin-left: $spacing-md;
-  }
+  margin-left: auto;
+  /* Ensure exact dimensions for toggle */
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  /* Remove any inherited spacing */
+  padding: 0 !important;
+  line-height: 1 !important;
+  vertical-align: top;
 }

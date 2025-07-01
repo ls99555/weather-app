@@ -36,7 +36,6 @@ $font-bold: 700;
 // Line Heights
 $leading-normal: 1.5;
 $leading-relaxed: 1.625;
-$leading-loose: 2;
 
 // =================================
 // BORDER RADIUS SYSTEM
@@ -59,12 +58,6 @@ $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1280px;
 $breakpoint-2xl: 1536px;
-
-// iPhone specific breakpoints
-$iphone-se: 375px;       // iPhone SE, iPhone 12/13/14 mini
-$iphone-standard: 390px; // iPhone 12/13/14/15
-$iphone-plus: 414px;     // iPhone 6/7/8 Plus, iPhone XR, iPhone 11
-$iphone-pro-max: 428px;  // iPhone 12/13/14/15 Pro Max
 
 // =================================
 // Z-INDEX SYSTEM
@@ -301,19 +294,6 @@ $dark-theme: (
   @if $breakpoint == 2xl {
     @media (min-width: $breakpoint-2xl) { @content; }
   }
-}
-
-// iPhone specific media query mixins
-@mixin iphone-se {
-  @media (max-width: $iphone-se) { @content; }
-}
-
-@mixin iphone-and-up {
-  @media (min-width: $iphone-se) { @content; }
-}
-
-@mixin mobile-landscape {
-  @media (orientation: landscape) and (max-height: 480px) { @content; }
 }
 
 // Button utilities
