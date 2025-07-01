@@ -12,13 +12,13 @@ export default function ThemeColorManager() {
     if (metaThemeColor) {
       metaThemeColor.setAttribute(
         'content', 
-        theme === 'dark' ? '#1f2937' : '#f9fafb'
+        theme === 'dark' ? '#374151' : '#f9fafb' // Updated to match new lighter dark background
       );
     } else {
       // Create the meta tag if it doesn't exist
       const meta = document.createElement('meta');
       meta.name = 'theme-color';
-      meta.content = theme === 'dark' ? '#1f2937' : '#f9fafb';
+      meta.content = theme === 'dark' ? '#374151' : '#f9fafb'; // Updated to match new lighter dark background
       document.head.appendChild(meta);
     }
 

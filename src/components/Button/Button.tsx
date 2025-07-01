@@ -31,7 +31,13 @@ export default function Button({
       'aria-checked': theme === 'dark' ? 'true' as const : 'false' as const
     };
     
-    return <button {...buttonProps}></button>;
+    return (
+      <button {...buttonProps}>
+        <span className={styles.toggleIcon} aria-hidden="true">
+          {theme === 'light' ? '☀️' : '🌙'}
+        </span>
+      </button>
+    );
   }
 
   return (

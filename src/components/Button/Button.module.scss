@@ -69,10 +69,10 @@
     left: 0; /* No spacing at left when off */
     width: 28px; /* Same as background height for perfect circle */
     height: 28px; /* Same as background height - fills completely */
-    background: white;
+    background: white; /* Light circle in light mode */
     border-radius: 14px; /* Half of height for perfect circle */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     z-index: 2;
     /* Remove any potential spacing */
     margin: 0;
@@ -90,6 +90,7 @@
     
     &::after {
       transform: translateX(32px); /* Slide to the right (60px - 28px = 32px) */
+      background: #374151; /* Dark circle in dark mode */
     }
   }
   
@@ -108,8 +109,16 @@
   [data-theme="dark"] & {
     background: #374151; /* Dark gray track in dark mode */
     
+    &::after {
+      background: #6b7280; /* Medium gray circle in dark mode when off */
+    }
+    
     &.active {
       background: #1f2937; /* Black when active */
+      
+      &::after {
+        background: #374151; /* Dark circle when active */
+      }
     }
   }
   
@@ -121,4 +130,32 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+.toggleIcon {
+  position: absolute;
+  top: 50%;
+  left: 14px; /* Center in the 28px circle: 28/2 = 14px from left edge */
+  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+  font-size: 12px; /* Slightly smaller for better fit */
+  line-height: 1;
+  z-index: 3; /* Above the sliding circle */
+  transition: transform 0.3s ease;
+  pointer-events: none; /* Don't interfere with button clicks */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; /* Same as circle width */
+  height: 28px; /* Same as circle height */
+  
+  .toggleSwitch.active & {
+    transform: translate(-50%, -50%) translateX(32px); /* Move with the sliding circle */
+  }
+  
+  /* Ensure emoji renders properly */
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-variant-emoji: emoji;
+  
+  /* Better emoji centering */
+  text-align: center;
 }
